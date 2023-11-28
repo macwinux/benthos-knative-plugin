@@ -1,0 +1,11 @@
+input:
+  stdin:
+    codec: lines
+pipeline:
+  processors:
+    - bloblang: |
+        root.len = this.foo.len_s()
+        root.foo = this.foo
+output:
+  stdout:
+    codec: lines

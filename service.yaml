@@ -1,0 +1,17 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: benthos-knative
+spec:
+  template:
+    metadata:
+      annotations:
+        # We want to check the logs, that's the reason of use this annotation
+        autoscaling.knative.dev/min-scale: "1"
+    spec:
+      containers:
+        - image: dev.local/benthos-knative-plugin:latest
+          imagePullPolicy: Never
+          args: [ "-c", "len-benthos.yaml" ]
+          ports:
+            - containerPort: 4195

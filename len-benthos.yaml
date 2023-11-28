@@ -1,0 +1,12 @@
+input:
+  http_server:
+    path: /post
+
+pipeline:
+  processors:
+    - bloblang: |
+        root.len = this.foo.len_s()
+        root.foo = this.foo
+
+output:
+  sync_response: {}

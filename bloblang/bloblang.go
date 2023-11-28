@@ -7,7 +7,7 @@ func init() {
 		Category("String Manipulation").
 		Description("Return the length of the string.")
 
-	if err := bloblang.RegisterMethodV2("lenString", lenSpec,
+	if err := bloblang.RegisterMethodV2("len_s", lenSpec,
 		func(args *bloblang.ParsedParams) (bloblang.Method, error) {
 			return bloblang.StringMethod(func(s string) (any, error) {
 				return len(s), nil
